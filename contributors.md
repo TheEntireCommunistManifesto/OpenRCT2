@@ -1,6 +1,3 @@
-
-
-# HELLO THIS IS DAVIIIID
 # Contributors to OpenRCT2
 Includes all git commit authors. Aliases are GitHub user names.
 
