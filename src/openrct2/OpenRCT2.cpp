@@ -387,7 +387,7 @@ namespace OpenRCT2
         String::Set(buffer, bufferSize, OPENRCT2_NAME ", v" OPENRCT2_VERSION);
         if (!String::IsNullOrEmpty(gGitBranch))
         {
-            String::AppendFormat(buffer, bufferSize, "-%s", gGitBranch);
+            String::AppendFormat(buffer, bufferSize, "-%s", "TECM");
         }
         if (!String::IsNullOrEmpty(gCommitSha1Short))
         {
