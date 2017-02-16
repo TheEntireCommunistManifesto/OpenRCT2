@@ -402,7 +402,7 @@ namespace OpenRCT2
         String::AppendFormat(buffer, bufferSize, " (DEBUG)", gBuildServer);
     #endif
 		
-		String::AppendFormat(buffer, bufferSize, " --- WELCOME TO THE ENTIRE COMMUNIST MANIFESTO VERSION ---");
+	String::AppendFormat(buffer, bufferSize, " --- WELCOME TO THE ENTIRE COMMUNIST MANIFESTO VERSION ---");
 		
         _versionInfo = buffer;
     }
