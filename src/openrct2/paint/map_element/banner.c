@@ -55,6 +55,10 @@ void banner_paint(uint8 direction, sint32 height, rct_map_element* map_element)
 	boundBoxOffsetY = BannerBoundBoxes[direction][0].y;
 	boundBoxOffsetZ = height + 2;
 
+	// prevents crash when deleting copy of sign
+	// instead, all instances of copied sign are deleted and refund is only recieved for original sign
+	if (banner_scenery == NULL) return;
+	
 	uint32 base_id = (direction << 1) + banner_scenery->image;
 	uint32 image_id = base_id;
 
