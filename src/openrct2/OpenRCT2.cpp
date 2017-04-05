@@ -387,7 +387,7 @@ namespace OpenRCT2
         String::Set(buffer, bufferSize, OPENRCT2_NAME ", v" OPENRCT2_VERSION);
         if (!String::IsNullOrEmpty(gGitBranch))
         {
-            String::AppendFormat(buffer, bufferSize, "-%s", "TECM");
+            String::AppendFormat(buffer, bufferSize, "-%s", gGitBranch);
         }
         if (!String::IsNullOrEmpty(gCommitSha1Short))
         {
@@ -400,6 +400,9 @@ namespace OpenRCT2
     #if DEBUG
         String::AppendFormat(buffer, bufferSize, " (DEBUG)", gBuildServer);
     #endif
+		
+		String::AppendFormat(buffer, bufferSize, " --- WELCOME TO THE ENTIRE COMMUNIST MANIFESTO VERSION ---");
+		
         _versionInfo = buffer;
     }
 
