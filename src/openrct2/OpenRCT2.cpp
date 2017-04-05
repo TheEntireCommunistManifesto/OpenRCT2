@@ -384,6 +384,7 @@ namespace OpenRCT2
     {
         utf8 buffer[256];
         size_t bufferSize = sizeof(buffer);
+		
         String::Set(buffer, bufferSize, OPENRCT2_NAME ", v" OPENRCT2_VERSION);
         if (!String::IsNullOrEmpty(gGitBranch))
         {
