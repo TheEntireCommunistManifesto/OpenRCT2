@@ -255,7 +255,6 @@ static void window_install_track_paint(rct_window *w, rct_drawpixelinfo *dpi)
 
 	// Stats
 	fixed32_2dp rating = td6->excitement * 10;
-	
 	gfx_draw_string_left(dpi, STR_TRACK_LIST_EXCITEMENT_RATING, &rating, COLOUR_BLACK, x, y);
 	y += 10;
 

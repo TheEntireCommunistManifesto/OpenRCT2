@@ -150,9 +150,6 @@ static paint_struct * sub_9819_c(uint32 image_id, rct_xyz16 offset, rct_xyz16 bo
 	ps->x = map.x;
 	ps->y = map.y;
 
-	//int test = g1Element->x_offset;
-	if (g1Element == NULL) printf("g1Element null\n");
-	
 	sint32 left = map.x + g1Element->x_offset;
 	sint32 bottom = map.y + g1Element->y_offset;
 
