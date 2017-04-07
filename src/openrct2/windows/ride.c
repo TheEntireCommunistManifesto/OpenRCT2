@@ -5202,6 +5202,13 @@ static void window_ride_measurements_invalidate(rct_window *w)
 	window_align_tabs(w, WIDX_TAB_1, WIDX_TAB_10);
 }
 
+// caps the range of the ratings
+static short in_range (short *rating) {
+	if (*rating > 10000) return 10000;
+	if (*rating < 0) return 0;
+	return *rating;
+}
+
 /**
  *
  *  rct2: 0x006ACF07
@@ -5230,7 +5237,12 @@ static void window_ride_measurements_paint(rct_window *w, rct_drawpixelinfo *dpi
 		sint32 y = w->y + window_ride_measurements_widgets[WIDX_PAGE_BACKGROUND].top + 4;
 
 		if (ride->lifecycle_flags & RIDE_LIFECYCLE_TESTED) {
+			
 			// Excitement
+			
+			// caps excitement within acceptable range
+			ride->excitement = in_range(&ride->excitement);
+			
 			set_format_arg(0, uint32, ride->excitement);
 			set_format_arg(4, rct_string_id, RatingNames[min(ride->excitement >> 8, 5)]);
 			rct_string_id stringId = ride->excitement == -1 ? STR_EXCITEMENT_RATING_NOT_YET_AVAILABLE : STR_EXCITEMENT_RATING;
@@ -5238,6 +5250,10 @@ static void window_ride_measurements_paint(rct_window *w, rct_drawpixelinfo *dpi
 			y += 10;
 
 			// Intensity
+			
+			// caps intensity within acceptable range
+			ride->intensity = in_range(&ride->intensity);
+			
 			set_format_arg(0, uint32, ride->intensity);
 			set_format_arg(4, rct_string_id, RatingNames[min(ride->intensity >> 8, 5)]);
 
@@ -5251,6 +5267,10 @@ static void window_ride_measurements_paint(rct_window *w, rct_drawpixelinfo *dpi
 			y += 10;
 
 			// Nausea
+			
+			// caps nausea within acceptable range
+			ride->nausea = in_range(&ride->nausea);
+			
 			set_format_arg(0, uint32, ride->nausea);
 			set_format_arg(4, rct_string_id, RatingNames[min(ride->nausea >> 8, 5)]);
 			stringId = ride->excitement == -1 ? STR_NAUSEA_RATING_NOT_YET_AVAILABLE : STR_NAUSEA_RATING;

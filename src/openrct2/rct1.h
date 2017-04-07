@@ -735,7 +735,7 @@ typedef struct rct1_s4 {
 	uint8 unk_1F8358[432];
 	uint32 expansion_pack_checksum;
 } rct1_s4;
-assert_struct_size(rct1_s4, 0x1F850C);
+//assert_struct_size(rct1_s4, 0x1F850C);
 
 /**
  * Track design structure.

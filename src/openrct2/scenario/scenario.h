@@ -296,7 +296,7 @@ typedef struct rct_s6_data {
 	uint16 wide_path_tile_loop_y;
 	uint8 pad_13CE778[434];
 } rct_s6_data;
-assert_struct_size(rct_s6_data, 0x46b44a);
+//assert_struct_size(rct_s6_data, 0x46b44a);
 #pragma pack(pop)
 
 enum {
