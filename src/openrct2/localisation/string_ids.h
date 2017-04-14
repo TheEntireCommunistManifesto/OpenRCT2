@@ -3664,6 +3664,8 @@ enum {
 	STR_UNIT2DP_SUFFIX_METRES = 6010,
 	STR_UNIT1DP_SUFFIX_FEET = 6011,
 	STR_UNIT1DP_NO_SUFFIX = 6012,
+	STR_NO_MECHANICS_HIRED = 6013,
+	STR_NO_MECHANICS_AVAILABLE = 6014,
 
 	// Have to include resource strings (from scenarios and objects) for the time being now that language is partially working
 	STR_COUNT = 32768

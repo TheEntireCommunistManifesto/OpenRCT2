@@ -28,6 +28,7 @@
 #include "../object/ObjectManager.h"
 #include "../object/ObjectRepository.h"
 #include "../peep/staff.h"
+#include "../peep/peep.h"
 #include "../rct2.h"
 #include "../ride/ride.h"
 #include "../ride/ride_data.h"
@@ -4015,9 +4016,35 @@ static void window_ride_maintenance_paint(rct_window *w, rct_drawpixelinfo *dpi)
 	// Mechanic status
 	if (ride->lifecycle_flags & RIDE_LIFECYCLE_BROKEN_DOWN) {
 		switch (ride->mechanic_status) {
-		case RIDE_MECHANIC_STATUS_CALLING:
-			stringId = STR_CALLING_MECHANIC;
-			break;
+			case RIDE_MECHANIC_STATUS_CALLING: {
+				
+				uint16 spriteIndex;
+				rct_peep* peep;
+				bool mechFound = false;
+				bool mechWalking = false;
+				
+				// iterates through staff and gets info about mechanics
+				FOR_ALL_STAFF(spriteIndex, peep) {
+					if (peep->staff_type == STAFF_TYPE_MECHANIC) {
+						mechFound = true;
+						if (peep->state == PEEP_STATE_WALKING) {
+							mechWalking = true;
+							break;
+						}
+					}
+				}
+				
+				// assigns appropriate string based upon status of mechanics
+				if (!mechFound) {
+					stringId = STR_NO_MECHANICS_HIRED;
+				} else if (!mechWalking) {
+					stringId = STR_NO_MECHANICS_AVAILABLE;
+				} else {
+					stringId = STR_CALLING_MECHANIC;
+				}
+				
+				break;
+			}
 		case RIDE_MECHANIC_STATUS_HEADING:
 			stringId = STR_MEHCANIC_IS_HEADING_FOR_THE_RIDE;
 			break;
@@ -4032,6 +4059,10 @@ static void window_ride_maintenance_paint(rct_window *w, rct_drawpixelinfo *dpi)
 
 		if (stringId != 0) {
 			if (stringId == STR_CALLING_MECHANIC) {
+				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
+			} else if (stringId == STR_NO_MECHANICS_HIRED) {
+				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
+			} else if (stringId == STR_NO_MECHANICS_AVAILABLE) {
 				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
 			} else {
 				rct_peep *mechanicSprite = &(get_sprite(ride->mechanic)->peep);

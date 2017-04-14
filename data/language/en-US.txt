@@ -3435,7 +3435,6 @@ STR_5821    :{SMALLFONT}{BLACK}Changes the color of the construction marker when
 STR_5827    :{SMALLFONT}{BLACK}Sets the color scheme used for the GUI
 STR_5907    :{SMALLFONT}{BLACK}When enabled, zooming in will center around the cursor, as opposed to the screen center.
 
-
 #############
 # Scenarios #
 #############
