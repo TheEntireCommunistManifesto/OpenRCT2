@@ -4058,11 +4058,9 @@ static void window_ride_maintenance_paint(rct_window *w, rct_drawpixelinfo *dpi)
 		}
 
 		if (stringId != 0) {
-			if (stringId == STR_CALLING_MECHANIC) {
-				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
-			} else if (stringId == STR_NO_MECHANICS_HIRED) {
-				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
-			} else if (stringId == STR_NO_MECHANICS_AVAILABLE) {
+			if (stringId == STR_CALLING_MECHANIC ||
+				stringId == STR_NO_MECHANICS_HIRED ||
+				stringId == STR_NO_MECHANICS_AVAILABLE) {
 				gfx_draw_string_left_wrapped(dpi, NULL, x + 4, y, 280, stringId, COLOUR_BLACK);
 			} else {
 				rct_peep *mechanicSprite = &(get_sprite(ride->mechanic)->peep);
